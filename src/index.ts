@@ -13,3 +13,10 @@ export * from "./admin.js";
 export * from "./lifecycle.js";
 export * from "./olur.js";
 export * from "./capabilities.js";
+
+export * from "./expert.js";
+export * from "./official-language.js";
+export * from "./deadline.js";
+export * from "./permissions.js";
+export * from "./inbox-triage.js";
+export * from "./execution.js";
