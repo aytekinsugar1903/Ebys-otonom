@@ -1,0 +1,3 @@
+export type DeadlineLevel="NORMAL"|"DUE_SOON"|"URGENT"|"OVERDUE";
+export interface DeadlineStatus {level:DeadlineLevel;millisecondsRemaining:number;reminders:readonly string[];}
+export function deadlineStatus(deadlineIso:string,nowIso:string):DeadlineStatus{const left=Date.parse(deadlineIso)-Date.parse(nowIso);const h=left/3600000;if(left<0)return {level:"OVERDUE",millisecondsRemaining:left,reminders:["OVERDUE_ESCALATION"]};if(h<=4)return {level:"URGENT",millisecondsRemaining:left,reminders:["4H"]};if(h<=24)return {level:"DUE_SOON",millisecondsRemaining:left,reminders:["24H","4H"]};if(h<=72)return {level:"DUE_SOON",millisecondsRemaining:left,reminders:["72H","24H","4H"]};return {level:"NORMAL",millisecondsRemaining:left,reminders:["72H","24H","4H"]};}
